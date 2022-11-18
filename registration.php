@@ -1,3 +1,6 @@
+<?php
+    require_once('config.php');
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +13,6 @@
 <body>
     <div>
         <?php 
-            if(isset($_POST['create'])){
-                $firstname      = $_POST['firstname'];
-                $lastname       = $_POST['lastname'];
-                $phonenumber    = $_POST['phonenumber'];
-                $companyname    = $_POST['companyname'];
-                $email          = $_POST['email'];
-                $password       = $_POST['password'];
-
-                echo "$firstname<br>";
-                echo "$lastname<br>";
-                echo "$phonenumber\n";
-                echo "$companyname\n ";
-                echo "$email\n";
-                echo "$password\n";
-            }
         ?>
     </div>
     <div>
@@ -36,29 +24,80 @@
                         <p>Please fill out the form to sign up</p>
                         <hr class="mb-3">
                         <label for ="firstname"><b>First Name</b></label>
-                        <input class="form-control" type="text" name ="firstname" required>
+                        <input class="form-control" type="text" id= "firstname" name ="firstname" required>
 
                         <label for ="lastname"><b>Last Name</b></label>
-                        <input class="form-control" type="text" name ="lastname" required>
+                        <input class="form-control" type="text" id= "lastname" name ="lastname" required>
 
                         <label for ="phonenumber"><b>Phone Number</b></label>
-                        <input class="form-control" type="text" name ="phonenumber" required>
+                        <input class="form-control" type="text" id= "phonenumber" name ="phonenumber" required>
 
                         <label for ="companyname"><b>Company Name</b></label>
-                        <input class="form-control" type="text" name ="companyname" required>
+                        <input class="form-control" type="text" id= "companyname" name ="companyname" required>
 
                         <label for ="email"><b>Email</b></label>
-                        <input class="form-control" type="email" name ="email" required>
+                        <input class="form-control" type="email" id= "email" name ="email" required>
 
                         <label for ="password"><b>Password</b></label>
-                        <input class="form-control" type="password" name ="password" required>
+                        <input class="form-control" type="password" id= "password" name ="password" required>
                         <hr class="mb-3">
-                        <input class = "btn btn-primary" type="submit" name="create" value="Sign Up">
+                        <input class = "btn btn-primary" type="submit" id= "register" name="create" value="Sign Up">
                     </div>
             </div>
         </form>
 
     </div>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type= "text/javascript">
+        $(function(){
+            $('#register').click(function(e){
+                var valid = this.form.checkValidity();
+                
+                if(valid){
+
+                    var firstname = $('#firstname').val();
+                    var lastname = $('#lastname').val();
+                    var phonenumber = $('#phonenumber').val();
+                    var companyname = $('#companyname').val();
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+
+                    e.preventDefault();
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: 'process.php',
+                        data: {firstname: firstname, lastname: lastname, phonenumber: phonenumber, companyname: companyname, email: email, password: password},
+                        success: function(data){
+                            Swal.fire({
+                            'title' : 'Sucessfully Registered!',
+                            'text': data,
+                            'type':'success'
+                            
+                            }).then(function() {
+                                window.location = "/MaTracker/registration.php";
+                                });
+                        },
+                        error: function(data){
+                            Swal.fire({
+                            'title' : 'Errors',
+                            'text': 'Errors were encountered while saving the data.',
+                            'type':'error'
+                            })
+                            
+                        }
+
+                    });
+                }else{
+                }
+            
+
+            });
+            
+        });
+        
+
+    </script>    
 </body>
 </html>
