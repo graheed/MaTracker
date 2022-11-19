@@ -8,43 +8,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
-    <link rel="stylesheet" type= "text/css" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <?php 
-        ?>
-    </div>
-    <div>
+    <div class="container">
+        <div class="title">Registration Form</div>
+        <div class="content">
         <form action="registration.php" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <h1>Registration</h1>
+        
                         <p>Please fill out the form to sign up</p>
-                        <hr class="mb-3">
-                        <label for ="firstname"><b>First Name</b></label>
-                        <input class="form-control" type="text" id= "firstname" name ="firstname" required>
+                        
+                        <div class="user-details">
+                        <div class="input-box">
+                        <label class = "details" for ="firstname"><b>First Name</b></label>
+                        <input class="form-control" type="text" id= "firstname" placeholder = "First Name" name ="firstname" required>
+                        </div>
+                        
+                        <div class="input-box">
+                        <label class= "details" for ="lastname"><b>Last Name</b></label>
+                        <input class="form-control" type="text" id= "lastname" placeholder = "Last Name" name ="lastname" required>
+                        </div>
+                        
+                        <div class="input-box">
+                        <label class= "details" for ="phonenumber"><b>Phone Number</b></label>
+                        <input class="form-control" type="text" id= "phonenumber" placeholder = "Phone Number" name ="phonenumber" required>
+                        </div>
+                        
+                        <div class="input-box">
+                        <label class= "details" for ="companyname"><b>Company Name</b></label>
+                        <input class="form-control" type="text" id= "companyname" placeholder = "Company Name" name ="companyname" required>
+                        </div>
+                        
+                        <div class="input-box">
+                        <label class= "details" for ="email"><b>Email</b></label>
+                        <input class="form-control" type="email" id= "email" placeholder = "Email Address" name ="email" required>
+                        </div>
+                        
+                        <div class="input-box">
+                        <label class= "details" for ="password"><b>Password</b></label>
+                        <input class="form-control" type="password" id= "password" placeholder = "Password" name ="password" autocomplete="new-password" required >
+                        </div>
 
-                        <label for ="lastname"><b>Last Name</b></label>
-                        <input class="form-control" type="text" id= "lastname" name ="lastname" required>
-
-                        <label for ="phonenumber"><b>Phone Number</b></label>
-                        <input class="form-control" type="text" id= "phonenumber" name ="phonenumber" required>
-
-                        <label for ="companyname"><b>Company Name</b></label>
-                        <input class="form-control" type="text" id= "companyname" name ="companyname" required>
-
-                        <label for ="email"><b>Email</b></label>
-                        <input class="form-control" type="email" id= "email" name ="email" required>
-
-                        <label for ="password"><b>Password</b></label>
-                        <input class="form-control" type="password" id= "password" name ="password" required>
-                        <hr class="mb-3">
-                        <input class = "btn btn-primary" type="submit" id= "register" name="create" value="Sign Up">
+                        <div class="button">
+                        <input type="submit" id= "register" name="create" value="Sign Up">
+                        </div>
                     </div>
-            </div>
+        
         </form>
+        </div>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -71,18 +83,19 @@
                         data: {firstname: firstname, lastname: lastname, phonenumber: phonenumber, companyname: companyname, email: email, password: password},
                         success: function(data){
                             Swal.fire({
-                            'title' : 'Sucessfully Registered!',
+                            'title' : 'Successfully Saved.',
                             'text': data,
                             'type':'success'
                             
                             }).then(function() {
-                                window.location = "/MaTracker/registration.php";
+                                window.location = "/MaTracker/login.php";
                                 });
+
                         },
                         error: function(data){
                             Swal.fire({
-                            'title' : 'Errors',
-                            'text': 'Errors were encountered while saving the data.',
+                            'title' : 'Could Save Data',
+                            'text': "Email Address Already Exists",
                             'type':'error'
                             })
                             
