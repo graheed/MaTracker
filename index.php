@@ -19,9 +19,16 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaTracker</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <p>Welcome to Home</p>
+    <div class="container">
+        <form action="search_product.php" class="search-bar" method="post">
+            <input type="search" placeholder="Search for a material" name="search_data" required>
+            <button type="submit" value="search" name="search_data_product"> <img src="images/search.png"></button>
+        </form>
+
+    </div>
     <a href="index.php?logout=true">Logout</a>
     
 </body>
