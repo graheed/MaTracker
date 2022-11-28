@@ -54,7 +54,8 @@ function search_product(){
                     <h5 class='card-title'>$product_title</h5>
                     <p class='card-text'>$product_description</p>
                     <p class='card-text'>$product_price</p>
-                    <a href='#' class='btn btn-primary'>View Details</a>
+                    <a href='gen_invoice.php?param1=$product_title&param2=$product_description&param3=$product_price' class='btn btn-primary'>Generate Invoice</a>
+
                     </div>
                     </div>
                     </div>";
