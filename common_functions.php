@@ -32,7 +32,7 @@ function search_product(){
                 $search = explode(" ", $_POST['search_data']);
                 $keyword = "";
                 $name = "";
-                $points = 0;
+                $counter = 0;
                 foreach($search AS $s)
                 {
                     $keyword .= "product_keywords LIKE '%$s%' or ";
@@ -44,6 +44,7 @@ function search_product(){
 
                 $stmt = $db->query("SELECT * FROM Products WHERE ($name) or ($keyword)");
                 while ($results = $stmt->fetch()) {
+                    
                     $product_title = $results['product_title'];
                     $product_description = $results['product_description'];
                     $product_price = $results['product_price'];
@@ -59,8 +60,14 @@ function search_product(){
                     </div>
                     </div>
                     </div>";
+                    $counter++;
 
     }
+    if ($counter == 0){
+        return 0;
+
+    }
+
             }
 
             

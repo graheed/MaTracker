@@ -31,6 +31,37 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<img src="logo.png" alt="" class="logo">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Manage Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Manage Suppliers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?logout=true">Logout</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="search_product.php" method="post">
+    <input type="search" name="search_data" required class="form-control mr-sm-2" type="search" placeholder="Search for material" aria-label="Search for material">
+    <button class="btn btn-light my-2 my-sm-0" type="submit" name="search_data_product">Search</button>
+
+    </form>
+  </div>
+</nav>
     <div class="container">
         <div class="row justify-content-center">
             <h1>Results<br><br><br></h1>
@@ -38,17 +69,25 @@ session_start();
         <div class="row">
             <!-- Fetching Products -->
             <?php
-                search_product();
-            
+                $resultFetched = search_product();
+                
             ?>
             
-            
         </div>
+        <?php 
+        if ($resultFetched==0){
+            echo"<div class='row justify-content-center'>
+            <h1>No Results Found<br><br><br></h1>
+        </div>";
+        }
+        ?>
         
                 
 
     </div>
-    <a href="index.php?logout=true">Logout</a>
+    <div class="bg-primary p-3">
+        <p style="text-align:center">Designed for La Vonne Stephenson and Associates</p>
+    </div>    
     
 </body>
 </html>
