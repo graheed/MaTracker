@@ -50,7 +50,7 @@ session_start();
     </ul>
   </div>
 </nav>
-    <div class="container-search p-0">
+    <div class="container-search p-0" id='product_search'>
         <form action="search_product.php" class="search-bar" method="post">
             <input type="search" placeholder="Search for a material" name="search_data" required>
             <button type="submit" value="search" name="search_data_product"> <img src="images/search.png"></button>

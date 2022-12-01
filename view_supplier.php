@@ -1,7 +1,4 @@
 <?php
-    require_once('config.php');
-    ?>
-<?php
 session_start();
     if(!isset($_SESSION['userlogin'])){
         header("Location: login.php");
@@ -14,7 +11,7 @@ session_start();
         
     }
 ?>
-<?php 
+<?php
     include('common_functions.php');
 ?>
 
@@ -24,11 +21,11 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaTracker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="search_product.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>View Supplier</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
@@ -63,13 +60,22 @@ session_start();
   </div>
 </nav>
     <div class="container">
-        <div class="row justify-content-center">
-            <h1>Results<br><br><br></h1>
-        </div>
+        
+            <?php
+            $Sname = $_GET['param2'];
+            echo "<div class='row justify-content-center'>
+            <h1>$Sname<br></h1></div>
+            <div class='row justify-content-center'>
+            <button class='button-29' role='button'>Contact Supplier</button>
+            </div>";
+            ?>
+
+        <br><br><br>
         <div class="row">
             <!-- Fetching Products -->
             <?php
-                $resultFetched = search_product();
+                $Sid = $_GET['param1'];
+                $resultFetched = display_Sproducts($Sid);
                 
             ?>
             
@@ -77,7 +83,7 @@ session_start();
         <?php 
         if ($resultFetched==0){
             echo"<div class='row justify-content-center'>
-            <h1>No Results Found<br><br><br></h1>
+            <h1>No Material to Display<br><br><br></h1>
         </div>";
         }
         ?>
@@ -85,7 +91,6 @@ session_start();
                 
 
     </div>
-    <br><br><br><br><br><br><br>
     <div class="bg-primary p-3">
         <p style="text-align:center">Designed for La Vonne Stephenson and Associates</p>
     </div>    

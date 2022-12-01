@@ -32,7 +32,7 @@
                         
                         <div class="input-box">
                         <label class= "details" for ="phonenumber"><b>Phone Number</b></label>
-                        <input class="form-control" type="text" id= "phonenumber" placeholder = "Phone Number" name ="phonenumber" required>
+                        <input class="form-control" type="tel" id= "phonenumber" placeholder = "876-333-4444" name ="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         </div>
                         
                         <div class="input-box">
