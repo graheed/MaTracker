@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    padding: 25px;
+    text-align: center;
+}
+
+.container {
+    align-items: left;
+    justify-content: left;
+}
+
+.btn {
+    padding: 15px;
+    color: white;
+    background-color: blueviolet;
+    border-color: blueviolet;
+    border-radius: 10%;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    padding: 15px;
+}
