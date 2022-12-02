@@ -1,0 +1,102 @@
+*{
+    box-sizing: border-box;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0%;
+}
+
+body{
+    display: flex;
+    background-color: rgb(240, 218, 163);
+    /* background-image: url(logo.png); */
+    align-items: center;
+    justify-content: center ;
+    padding: 50px;
+}
+
+.quotationContainer{
+    background-color: white;
+    margin: 0px;
+    padding: 15px;
+    display: flex;
+}
+
+.quote{
+    border: 2px solid rgb(60, 134, 246);
+    padding: 30px;
+    /* display: flex; */
+}
+
+
+.quote .heading .heading-logo-info{
+    /* display: flex; */
+    align-items: center;
+    padding: 10px;
+}
+
+.quote .heading .heading-logo-info img{
+    float:  left;
+    height: 5%;
+    width: 20%;
+    margin-top: 0;
+}
+
+.quote .heading .heading-logo-info .QuoteInfo {
+    /* display: flex; */
+    /* width: 20%; */
+    text-align: justify;
+}
+
+.quote .heading .heading-logo-info .QuoteInfo h3{
+    text-align: center;
+    justify-content: center;
+    margin-right: 30%;
+    display: flex;
+}
+
+.quote .heading .heading-logo-info .QuoteInfo p{
+    display: flex;
+    margin-left: 60%;
+    font-weight: 530;
+    text-align: right;
+}
+
+
+.quote .heading .custBilling h4{
+    text-align: left;
+}
+
+.quote .heading .custBilling{
+    /* display: flex; */
+    justify-content: space-between;
+    text-align: left;
+}
+.quote .heading  .custBilling p{
+    font-weight: 550;
+    font-size: 14px;
+}
+
+.tabBody table{
+    border-collapse: collapse;
+    font-family:'Courier New', Courier, monospace;
+
+}
+td, th {
+    border: 1px solid  grey;
+    text-align: center;
+    padding: 10px;
+  }
+
+th{
+    text-decoration:underline;
+}
+
+footer{
+    text-align: center;
+    color: rgb(74, 198, 248);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    margin-top: 30px;
+    padding: 20px;
+}

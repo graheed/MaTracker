@@ -38,14 +38,20 @@
                   <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">Manage Products</a>
+                  <a class="nav-link" href="add_product.php">Manage Products</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="add_supplier.php">Manage Suppliers</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
                </li>
+                  <?php
+                   if($_SESSION['userlogin']['type'] == "supplier"){
+                     echo "<li class='nav-item'>
+                     <a class='nav-link' href='edit_product.php'>My Products</a>
+                     </li>";
+                 }
+                  
+                  ?>
                <li class="nav-item">
                   <a class="nav-link" href="index.php?logout=true">Logout</a>
                </li>
@@ -59,16 +65,19 @@
       <div class="container">
          <?php
             $Sname = $_GET['param2'];
+            $Sid2 = $_GET['param1'];
             echo "<div class='row justify-content-center'>
             <h1>$Sname<br></h1></div>
             <div class='row justify-content-center'>
-            <button class='button-29' role='button'>Contact Supplier</button>
+            <a href='contact.php?param1=$Sid2' class='button-29 role='button'>Contact Supplier</a>
+
             </div>";
             ?>
          <br><br><br>
          <div class="row">
             <!-- Fetching Products -->
             <?php
+            
                $Sid = $_GET['param1'];
                $resultFetched = display_Sproducts($Sid);
                

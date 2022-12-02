@@ -23,9 +23,7 @@
                    </div>";
                }
            }  
-   function add_product(){
-    
-   }
+
    function display_Sproducts($Sid){
    
        global $db;
@@ -38,14 +36,15 @@
                $product_description = $results['product_description'];
                $product_price = $results['product_price'];
                $product_unit = $results['product_unit'];
+               $product_image = $results['product_image'];
                echo "<div class='col-md-3 mb-2'>
                <div class='card'>
-               <img class='card-img-top' src='...' alt='...'>
+               <img class='card-img-top' src='images/$product_image' alt='...'>
                <div class='card-body'>
                <h5 class='card-title'>$product_title</h5>
                <p class='card-text'>$product_description</p>
                <p class='card-text'>$ $product_price/$product_unit</p>
-               <a href='gen_invoice.php?param1=$product_title&param2=$product_description&param3=$product_price' class='btn btn-primary'>Generate Invoice</a>
+               <a href='quoteform.php?param1=$product_title&param2=$product_description&param3=$product_price' class='btn btn-primary'>Generate Invoice</a>
                </div>
                </div>
                </div>";
@@ -60,6 +59,43 @@
        }
    }
    }
+
+   function edit_Sproducts($Sid){
+   
+    global $db;
+    if ($Sid != ''){
+    $stmt = $db->query("SELECT * FROM (Products JOIN Suppliers ON (Products.Sid = Suppliers.Sid))");
+    $counter = 0;
+    while ($results = $stmt->fetch()) {
+        if ($results['Sid'] == $Sid){
+            $product_title = $results['product_title'];
+            $product_description = $results['product_description'];
+            $product_price = $results['product_price'];
+            $product_unit = $results['product_unit'];
+            $product_image = $results['product_image'];
+            $product_id = $results['product_id'];
+            echo "<div class='col-md-3 mb-2'>
+            <div class='card'>
+            <img class='card-img-top' src='images/$product_image' alt='...'>
+            <div class='card-body'>
+            <h5 class='card-title'>$product_title</h5>
+            <p class='card-text'>$product_description</p>
+            <p class='card-text'>$ $product_price/$product_unit</p>
+            <a href='quoteform.php?param1=$product_id class='btn btn-primary'>Edit Product</a>
+            </div>
+            </div>
+            </div>";
+            $counter++;
+        }
+    }
+    if ($counter == 0){
+        return 0;
+
+    }else{
+        return $counter;
+    }
+}
+}
    
    function search_product(){
                global $db;
@@ -87,15 +123,16 @@
                        $product_description = $results['product_description'];
                        $product_price = $results['product_price'];
                        $product_unit = $results['product_unit'];
+                       $product_image = $results['product_image'];
                        echo "<div class='col-md-3 mb-2'>
                        <div class='card'>
-                       <img class='card-img-top' src='...' alt='...'>
+                       <img class='card-img-top' src='images/$product_image' alt='...'>
                        <div class='card-body'>
                        <h5 class='card-title'>$product_title</h5>
                        <p class='card-text'>Supplier: <a href='view_supplier.php?param1=$supplier_id&param2=$supplier_name'>$supplier_name</a></p>
                        <p class='card-text'>$product_description</p>
                        <p class='card-text'>$ $product_price/$product_unit</p>
-                       <a href='gen_invoice.php?param1=$product_title&param2=$product_description&param3=$product_price' class='btn btn-primary'>Generate Invoice</a>
+                       <a href='quoteform.php?param1=$product_title&param2=$product_description&param3=$product_price&param4=$product_unit&param5=$supplier_name' class='btn btn-primary'>Generate Invoice</a>
    
                        </div>
                        </div>
